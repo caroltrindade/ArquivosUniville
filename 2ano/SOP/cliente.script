@@ -1,0 +1,8 @@
+#!/usr/bash
+echo "Carolina Trindade"
+echo "Carolina Trindade" > Cliente01.txt 
+echo "Jaragua do Sul" >> Cliente01.txt
+mkdir clientes
+mv Cliente01.txt clientes
+cd clientescp Cliente01.txt Cliente01.txt.bkp
+rm Cliente01.txt

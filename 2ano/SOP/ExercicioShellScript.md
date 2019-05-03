@@ -26,6 +26,7 @@
     echo "Segundo Número: "
     read num2
     result=$[ $num1 * $num2 ]
+    # Caso não funcione no emulador, favor utilizar result=$(( $num1 * $num2 ))
     echo "Resultado: $result"
     ```
 
@@ -60,14 +61,23 @@
     ... 
     2x10 = 20
     ```
+
     ```shell
     #!/usr/bash
     echo "Número: "
     read num
-    if num -lt 0 then resultado="Negativo"
-    elif num -gt 0 then resultado="Positivo"
-    else resultado="Zero"
-    echo "O Número é: $resultado"
+
+    # Caso não funcione no emulador, favor utilizar $(( ... )) no lugar de $[ ... ]
+
+    i=0
+    while [ $i -le 10 ]; do
+        resultado=$[ $num * $i ]
+        
+        echo "$num x $i = $resultado"
+
+        i=$[ $i + 1]
+    done
+
     ```
 
 1. Crie um script que apresente duas opções ao usuário. A primeira opção deverá mostrar o calendário. A segunda opção deve mostrar a lista de arquivos do diretório
@@ -84,3 +94,19 @@
     arquivo.txt diretório arquivo2.txt
     ```
 
+    ```shell
+    #!/usr/bash
+    echo "Opções: "
+    echo "1: Calendário"
+    echo "2: Mostrar Lista de arquivos do diretório"
+    read opcao
+
+    if [ $opcao -eq 1 ]; then 
+        echo "Mostrar Calendário"
+        cal
+    elif [ $opcao -eq 2 ]; then 
+        echo "Mostrar arquivos do diretório"
+        ls
+    fi
+
+    ```
