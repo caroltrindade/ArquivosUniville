@@ -202,7 +202,7 @@
 
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
     > Um construtor pode ser diferenciado utilizando '<<create>> metodoConstrutor()', onde o método será público e não terá retorno.\
-    > Por Exemplo: + <<create>> Pessoa()
+    > Por Exemplo: + <<'create'>> Pessoa()
 
     |     Pessoa     |
     | -------------- |
@@ -260,7 +260,7 @@
 
 1. Desenvolva o código java das classes do apresentadas no diagrama de classes UML abaixo:
 
-![ImagemUMLClasse](/images/ImagemUMLClasse.png)
+![ImagemUMLClasse](images/ImagemUMLClasse.png)
 
 
 
