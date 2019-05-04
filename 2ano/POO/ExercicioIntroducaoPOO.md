@@ -101,7 +101,7 @@
             public String nome;
             public int matricula;
             
-            public Pessoa(){
+            public Aluno(){
 
             }
         }
@@ -109,9 +109,9 @@
         // Arquivo da classe onde será inicializado o objeto
         public class Inicializacao(){
 
-            public static void main(String [] args){
+            public static void main(String[] args) {
                 // Instanciação da classe
-                public Aluno aluno = new Aluno();
+                Aluno aluno = new Aluno();
             }
         }
     ``` 
@@ -137,7 +137,7 @@
             private int matricula;
             
             public int getMatricula(){
-                return this.matricula;
+                return matricula;
             }
 
             public void setMatricula(int matricula){
@@ -154,7 +154,7 @@
             private int idade;
             
             public int getIdade(){
-                return this.idade;
+                return idade;
             }
         }
     ``` 
@@ -182,18 +182,32 @@
 1. Qual é o padrão utilizado para representar um atributo no diagrama de classe
     > O padrão utilizado é modificadorAcesso / nomeAtributo: TipoDado
     > Por exemplo: - nome: String\
+    
+    |     Pessoa     |
+    | -------------- |
+    |- nome : String |
+
     > Isto significa que o atributo nome é privado (-) e é do tipo de dado String.
 
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
     > O padrão utilizado é modificadorAcesso / nome_metodo (parametro: tipoDado) : tipoDadoRetorno
     > Exemplo 1: + getNome(): String\
     > Exemplo 2: + setNome(nome: String): void\
+    
+    |     Pessoa     |
+    | -------------- |
+    |- nome : String |
+    |+ getNome(): String <br> + setNome(nome: String) : void |
+
 
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
     > Um construtor pode ser diferenciado utilizando '<<create>> metodoConstrutor()', onde o método será público e não terá retorno.\
     > Por Exemplo: + <<create>> Pessoa()
 
-    ![ContrutorUML](/images/ContrutorUML.png)
+    |     Pessoa     |
+    | -------------- |
+    |- nome : String |
+    |+ <<create>> Pessoa()|
 
 1. Quais são os simbolos utilizados no diagrama de classe UML para representar os modificadores de acessos aos atributos e métodos? Crie um exemplo.
     Representação dos modificadores de acesso:
@@ -205,19 +219,50 @@
     |     Pessoa     |
     | -------------- |
     |- nome : String |
-    |+ getNome(): String <br> + setNome(nome: String) : void |
-    
-    ![ContrutorUML](/images/ContrutorUML.png)
+    |+ getNome(): String <br> + setNome(nome: String) : void <br> # alterarNome(nome: String) : void |
 
-@TODO
+1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos métodos getters e setters. Desenvolva o diagrama de classe UML.
 
-1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos méetodos getters e setters. Desenvolva o diagrama de classe UML.
+    |     Cliente    |
+    | -------------- |
+    |- nome : String <br> - email : String <br> - telefone : int |
+    |+ getNome(): String <br> + setNome(nome: String) : void <br> + getEmail(): String <br> + setEmail(email: String) : void <br> + getTelefone(): int <br> + setTelefone(telefone: int) : void|
 
 1. Considere a classe Cliente apresentado no Problema 29, e desenvolva o código Java correspondente.
+
+    ```java
+    public class Cliente {
+	private String nome;
+	private String email;
+	private int telefone;
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public int getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
+    ```
 
 1. Desenvolva o código java das classes do apresentadas no diagrama de classes UML abaixo:
 
 ![ImagemUMLClasse](/images/ImagemUMLClasse.png)
+
+
 
 1. Desenvolva o diagrama de classe dos cóodigos Java abaixo.
     ```java
