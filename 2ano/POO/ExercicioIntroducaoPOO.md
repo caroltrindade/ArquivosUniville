@@ -10,14 +10,14 @@
         > Parar ou Andar, Ligar ou Desligar, Abrir ou Fechar as portas.\
 
 1. No contexto de Orientação a Objetos, as características e comportamentos são chamados respectivamente de?
-    Atributos e métodos.
+    > Atributos e métodos.
 
 1. Qual é o objetivo da programação orientada à objetos?
-    Tem o objetivo de desenvolver um software utilizando objetos de maneira cooperativa através de troca de mensagens entre os mesmos (Interação entre objetos com os métodos);
+    > Tem o objetivo de desenvolver um software utilizando objetos de maneira cooperativa através de troca de mensagens entre os mesmos.
 
 1. O que é abstração? Cite um exemplo.
-    > É a representação de alguma coisa do mundo real, se preocupando apenas com suas características principais disto. \
-    > Exemplo: As características e comportamentos de um avião.
+    > É a representação de alguma coisa do mundo real, se preocupando apenas com suas características principais disto.\
+    > Exemplo: As características (Quantidade de Lugares, peso, etc) e comportamentos (Voar, pousar, etc) de um avião.
 
 1. O que é classe?
     > É a representação das caracteristicas e comportamentos de um objeto do mundo real. Tendo em mente que serão representados por meio de atributos e métodos, respectivamente.\
@@ -26,6 +26,7 @@
 1. Qual é o padrão utilizado para nomear as classes? Cite um exemplo.
     > Padrão PascalCase, onde a primeira letra de todas as palavras deve ser maiúscula.\
     > Também, o nome da classe deve fazer referência ao seu objeto, de modo que se entenda a finalidade da mesma.
+    > Por exemplo: Pessoa.
 
 1. Qual opção apresenta corretamente o nome da classe carro elétrico?
     1. carroeletrico
@@ -37,8 +38,8 @@
     > 4. CarroEletrico
 
 1. Qual é o padrão utilizado para nomear os atributos? Cite um exemplo.
-    > Padrão camelCase, onde a primeira letra de cada palavra deve ser em maiúscula, com exceção da primeira palavra. \
-    > Por exemplo: dataEmissao, onde a palavra "data" começa com letra minúscula, pois é a primeira palavra, e a palavra "Emissao" inicia com letra maiúsula
+    > Padrão camelCase, onde a primeira letra de cada palavra deve ser em maiúscula, com exceção da primeira palavra.\
+    > Por exemplo: dataEmissao, onde a palavra "data" começa com letra minúscula, pois é a primeira palavra, e a palavra "Emissao" inicia com letra maiúsula.
 
 1. Qual opção apresenta corretamente o nome do atributo cor de fundo?
     1. CordeFundo
@@ -76,7 +77,7 @@
 
 1. O que é o construtor? Qual é o seu objetivo? Qual deve ser o seu nome? Cite um exemplo.
     > Trata-se do método inicializador de uma classe, ele inicializa variáveis, instancia objetos necessários e dispara métodos de inicialização.\
-    > Seu nome deve ser exatamente igual ao da classe em do mesmo.\
+    > Seu nome deve ser exatamente igual ao da classe do mesmo.\
     > Exemplo:
 
     ```java
@@ -160,7 +161,7 @@
     ``` 
 
 1. Qual o objetivo dos métodos setters? Crie um exemplo.
-    > Seu objetivo é atribuir valores à atributos. Estes atributos geralmentep ossuem modificador de acesso privado (private).
+    > Seu objetivo é atribuir valores à atributos. Estes atributos geralmente possuem modificador de acesso privado (private).
     
     ```java
         public class Pessoa(){
@@ -190,7 +191,7 @@
     > Isto significa que o atributo nome é privado (-) e é do tipo de dado String.
 
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
-    > O padrão utilizado é modificadorAcesso / nome_metodo (parametro: tipoDado) : tipoDadoRetorno
+    > O padrão utilizado é modificadorAcesso / nome_metodo (parametro: tipoDado) : tipoDadoRetorno.\
     > Exemplo 1: + getNome(): String\
     > Exemplo 2: + setNome(nome: String): void\
     
@@ -201,20 +202,26 @@
 
 
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
-    > Um construtor pode ser diferenciado utilizando '<<create>> metodoConstrutor()', onde o método será público e não terá retorno.\
-    > Por Exemplo: + <<'create'>> Pessoa()
+    > Um construtor pode ser diferenciado utilizando '<<'create'>> metodoConstrutor()', onde o método será público e não terá retorno:\
 
     |     Pessoa     |
     | -------------- |
     |- nome : String |
-    |+ <<create>> Pessoa()|
+    |+ <<'create'>> Pessoa()|
+
+    > Ou, o construtor também pode ser representado apenas utilizando o nome da classe:\
+
+    |     Pessoa     |
+    | -------------- |
+    |- nome : String |
+    |+ Pessoa()      |
 
 1. Quais são os simbolos utilizados no diagrama de classe UML para representar os modificadores de acessos aos atributos e métodos? Crie um exemplo.
     Representação dos modificadores de acesso:
-    \-: Privado
-    \+: Público
-    \#: Protegido
-    \~: Padrão
+    \-: Privado: Apenas a classe em questão possui permissão para acessar o atributo ou método;
+    \+: Público: Qualquer classe possui permissão para acessar o atributo ou método;
+    \#: Protegido: Apenas as classes filhas e as classes do mesmo pacote da classe possuem permissão para acessar o atributo ou método;
+    \~: Padrão: Todas as classes do pacote em que a classe está possuem permissão para acessar o atributo ou método. Este é o modicicador default, ou seja, quando não é definido nenhum;
 
     |     Pessoa     |
     | -------------- |
@@ -260,11 +267,57 @@
 
 1. Desenvolva o código java das classes do apresentadas no diagrama de classes UML abaixo:
 
-![ImagemUMLClasse](images/ImagemUMLClasse.png)
+    ![ImagemUMLClasse](images/ImagemUMLClasse.png)
+
+    ```java
+    
+    // Arquivo da classe Produto
+    public class Produto {
+        private String nome;
+        
+        public String getNome() {
+            return nome;
+        }
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+    }
+
+    // Arquivo da classe Password
+    public class Password {
+        private String value;
+        
+        public Password(String value){
+            this.value = value;
+        }
+
+        public boolean isEqual(Password p) {
+            boolean isEqual = false;
+            
+            if (p.value == this.value){
+                isEqual = true;
+            }
+            
+            return isEqual;
+        }    
+    }
+
+    // Arquivo da classe Password
+    public class Animal {
+        private boolean alive;
+
+        public boolean isAlive(){
+            return this.alive
+        }
+
+        private die(){
+            this.alive = false;
+        }
+    }
+    ```
 
 
-
-1. Desenvolva o diagrama de classe dos cóodigos Java abaixo.
+1. Desenvolva o diagrama de classe dos códigos Java abaixo.
     ```java
     public class Livro{
         private String nome;
@@ -306,9 +359,42 @@
     }
     ```
 
-1. O que é o estado de um objeto? Cite um exemplo com a classe Aluno com os atributos nome, idade, matrícula e curso. Utilize o diagrama de estado de objeto.
+    > Diagrama de classe da classe Livro
+    
+    |      Livro     |
+    | -------------- |
+    |- nome : String |
+    |+ getNome(): String <br> + setNome(nome: String) : void|
 
-1. Qual ébo estado do objeto da classe Dog quando é inicializado? Desenvolva o diagrama de objetos.
+    > Diagrama de classe da classe ContaCorrente
+    
+    |  ContaCorrente |
+    | -------------- |
+    |- saldo : double|
+    |+ sacar(valor: double): double <br> + depositar(valor: double) : void <br> + recalcularSaldo() : void|
+
+    > Diagrama de classe da classe Par
+
+    |      Par       |
+    | -------------- |
+    |- chave : String <br> - valor : String|
+
+    > Diagrama de classe da classe Impressora
+    
+    |   Impressora   |
+    | -------------- |
+    |- saldo : double|
+    |+ imprimir(documento: Documento) : void|
+
+1. O que é o estado de um objeto? Cite um exemplo com a classe Aluno com os atributos nome, idade, matrícula e curso. Utilize o diagrama de estado de objeto.
+    > Trata-se dos valores dos atributos de um objeto em determinado instante de tempo, semelhante à uma imagem do objeto.\
+    > Por exemplo:
+
+    |     Aluno      |
+    | -------------- |
+    | nome : Carolina <br> idade: 18 <br> matricula: 12345 <br> curso: Sistemas de Informação |
+
+1. Qual é o estado do objeto da classe Dog quando é inicializado? Desenvolva o diagrama de objetos.
 
     ```java
         public class Dog{
@@ -318,6 +404,10 @@
             //Getters e setters suprimido
         }
     ```
+
+    |      Dog       |
+    | -------------- |
+    | years: 0 <br> name: null <br> alive: false |
 
 1. Qual é o estado do objeto dog no final da execução do método main? Desenvolva o diagrama de objetos.
 
@@ -331,7 +421,11 @@
         6:}
     ```
 
-1. Qual é o estado do objeto pug e buldog ap´os a execu¸c˜ao da linha 6? Desenvolva o diagrama de objetos.
+    |      Dog       |
+    | -------------- |
+    | years: 10 <br> name: Spike <br> alive: true |
+
+1. Qual é o estado do objeto pug e buldog após a execução da linha 6? Desenvolva o diagrama de objetos.
 
     ```java
         1: Dog pug = new Dog();
@@ -344,19 +438,39 @@
         8: pug.setYears(1);
     ```
 
+    |      Pug       |
+    | -------------- |
+    | years: 2 <br> name: Spoke <br> alive: true |
+
+    |     Buldog     |
+    | -------------- |
+    | years: 0 <br> name: Spike <br> alive: false |
+
 1. Analise o código abaixo. Verifique se existem problemas, caso sim, indique o problema e sugere as correções.
 
     ```java
-        1: public class Cat{
-        2: private String name;
-        3: public double weight;
-        4: // Getters e Setters suprimidos
-        5:}
-        6:public class Main{
-        7: public static void main(String args[]){
-        8: Cat c = new Cat();
-        9: c.weight = 3.5;
-        10: c.name = "BlackCat";
-        11: }
-        12:}
+        1:  public class Cat{
+        2:      private String name;
+        3:      public double weight;
+        4:      // Getters e Setters suprimidos
+        5:  }
+        6:  public class Main{
+        7:      public static void main(String args[]){
+        8:          Cat c = new Cat();
+        9:          c.weight = 3.5;
+        10:         c.name = "BlackCat";
+        11:     }
+        12: }
+    ```
+    > O atributo 'name' é privado, sendo assim não é possível alterar se valor diretamente pelo atributo, é necessário utilizar o método setName("BlackCat").
+    > Além disso, o método main não foi declarado corretamente, pois ao invés de declarar '(String[] args)', foi declarado '(String args[])'.
+
+    ```java
+    public class Main{
+        public static void main(String[] args){
+            Cat c = new Cat();
+            c.weight = 3.5;
+            c.setName("BlackCat");
+        }
+    }
     ```
