@@ -1,0 +1,6 @@
+p1 CPU 5
+p2 ES 3
+p3 CPU 7
+p4 ES 1
+
+
