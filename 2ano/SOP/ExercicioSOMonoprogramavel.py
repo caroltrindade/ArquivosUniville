@@ -35,7 +35,6 @@
 
 import time
 
-
 def main():
     processos = {}
     arquivo = open('./arquivos/entrada.txt', 'r')
@@ -44,11 +43,38 @@ def main():
 
     print("Simulador SO Monotarefa")
     print("\n")
+    
+    espera = []
+    tempoEspera = 0
 
     for linha in linhas:
         [nomeProcesso, tipoProcesso, duracaoProcesso] = linha.split(" ")
 
-        duracaoProcesso = int(duracaoProcesso, base=10)
+        duracaoProcesso = int(duracaoProcesso)
+
+        # Acumula o tempo de duração do processo pelo tipo do mesmo
+        
+        duracaoTotal = 0
+        if tipoProcesso in processos:
+            duracaoTotal = processos[tipoProcesso]
+            
+        duracaoTotal = duracaoTotal + duracaoProcesso
+        processos[tipoProcesso] = duracaoTotal
+
+        index = linhas.index(linha)
+
+        # Acumula o tempo de espera
+
+        if index != 0:
+            linhaAnterior = linhas[(index - 1)]
+            
+            dados = linhaAnterior.split(" ")
+            duracaoProcessoAnterior = dados[2]
+
+            tempoEspera = tempoEspera + int(duracaoProcessoAnterior)
+            espera.append(tempoEspera)
+            
+        # Imprime os dados da execução do processo
 
         for cont in range(duracaoProcesso + 1):
             print("Executanto o processo:", nomeProcesso)
@@ -57,10 +83,26 @@ def main():
             print("Tempo restante: ", (duracaoProcesso - cont))
             print("\n")
             
-            #if processos[tipoProcesso] == undefined:
-            #    processos[tipoProcesso] = "TESTEW"
-            
             time.sleep(1)
+
+    # Acumula os dados na variável e então os imprime
+
+    mensagem = ""
+    tempoTotal = 0
+    
+    for tipoProcesso in processos:
+        mensagem = mensagem + "Tempo total de execução processos " + tipoProcesso + ": " + str(processos[tipoProcesso]) + " \n"
+        tempoTotal = tempoTotal + processos[tipoProcesso]
+
+    tempoTotalEspera = 0
+
+    for i in espera:
+        tempoTotalEspera = tempoTotalEspera + i
+
+    mensagem = "Tempo total de execução: " + str(tempoTotal) + " \n" + mensagem
+    mensagem = mensagem + "Tempo de espera médio dos processos: "  + str((tempoTotalEspera / len(linhas)))
+
+    print(mensagem)
 
 if __name__ == "__main__":
     main()
