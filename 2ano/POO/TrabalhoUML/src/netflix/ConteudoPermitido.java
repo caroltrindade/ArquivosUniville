@@ -1,4 +1,4 @@
-package classes;
+package netflix;
 
 public enum ConteudoPermitido {
 	CRIANCA_PEQUENA("Apenas para crianças pequenas"),

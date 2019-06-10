@@ -1,4 +1,4 @@
-package classes;
+package netflix;
 
 public class Arquivo {
 	private String nome;
@@ -11,12 +11,14 @@ public class Arquivo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getExtensao() {
 		return extensao;
 	}
 	public void setExtensao(String extensao) {
 		this.extensao = extensao;
 	}
+	
 	public String getCaminhoArquivo() {
 		return caminhoArquivo;
 	}
@@ -24,4 +26,9 @@ public class Arquivo {
 		this.caminhoArquivo = caminhoArquivo;
 	}
 	
+	public Arquivo(String nome, String extensao, String caminhoArquivo) {
+		this.nome = nome;
+		this.extensao = extensao;
+		this.caminhoArquivo = caminhoArquivo;
+	}
 }

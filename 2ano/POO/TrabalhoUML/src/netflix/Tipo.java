@@ -1,4 +1,4 @@
-package classes;
+package netflix;
 
 public enum Tipo {
 	FILME("Filme"),
