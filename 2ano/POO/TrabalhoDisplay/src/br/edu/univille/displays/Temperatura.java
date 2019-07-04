@@ -5,18 +5,29 @@ import br.edu.univille.classes.Graus;
 import br.edu.univille.formatter.Formatter;
 
 public class Temperatura extends Display implements Formatter<Graus>{
-	private String temperaturaFormatada;
+	private Graus graus;
 	
-	@Override
-	public void show() {
-		System.out.println(this.temperaturaFormatada);
-		
+	public Graus getGraus() {
+		return graus;
+	}
+
+	public void setGraus(Graus graus) {
+		this.graus = graus;
+	}
+	
+	public Temperatura(Graus graus) {
+		super();
+		this.graus = graus;
 	}
 
 	@Override
-	public void formatter(Graus graus) {
-		this.temperaturaFormatada = graus.getGraus() + " °C";
-		
+	public void show() {
+		System.out.println(formatter(this.graus));	
+	}
+
+	@Override
+	public String formatter(Graus graus) {
+		return "Temperatura:\n" + graus.getGraus() + " °C";
 	}
 
 }

@@ -4,16 +4,30 @@ import br.edu.univille.classes.Hora;
 import br.edu.univille.formatter.Formatter;
 
 public class RadioRelogio extends Display implements Formatter<Hora>{
-	private String horaFormatada;
+	private Hora hora;
+	
+	public Hora getHora() {
+		return hora;
+	}
 
+	public void setHora(Hora hora) {
+		this.hora = hora;
+	}
+	
+	public RadioRelogio(Hora hora) {
+		this.hora = hora;
+	}
+
+	public RadioRelogio() {
+	}
+	
 	@Override
 	public void show() {
-		System.out.println(this.horaFormatada);
-		
+		System.out.println(formatter(this.hora));
 	}
 
 	@Override
-	public void formatter(Hora hora) {
-		this.horaFormatada = hora.getHora() + ":" + hora.getMinutos();
+	public String formatter(Hora hora) {
+		return "Rádio Relógio:\n" + hora.getHora() + ":" + hora.getMinutos();
 	}
 }

@@ -13,39 +13,34 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Utiização do Rádio Relógio:");
+		// Utiização do Rádio Relógio:
 		
-		RadioRelogio radioRelogio = new RadioRelogio();
 		Hora hora = new Hora(10,30);
-		
-		radioRelogio.formatter(hora);
+		RadioRelogio radioRelogio = new RadioRelogio(hora);
 		radioRelogio.show();
 		
 		System.out.println("");
+	
+		// Utiização do Rádio FM:
 		
-		System.out.println("Utiização do Rádio FM:");
-		RadioFM radioFM = new RadioFM();
 		Frequencia frequencia = new Frequencia(99.1);
-			
-		radioFM.formatter(frequencia);
+		RadioFM radioFM = new RadioFM(frequencia);
 		radioFM.show();
 			
 		System.out.println("");
 		
-		System.out.println("Utiização da Temperatura:");
-		Temperatura temperatura = new Temperatura();
+		//Utiização da Temperatura:
+		
 		Graus graus = new Graus(21.5);
-			
-		temperatura .formatter(graus);
+		Temperatura temperatura = new Temperatura(graus);
 		temperatura .show();
 		
 		System.out.println("");
 		
-		System.out.println("Utiização do Calendário:");
-		Calendario calendario = new Calendario();
-		Data data= new Data(25,06,2019);
-			
-		calendario .formatter(data);
+		// Utiização do Calendário:
+		
+		Data data = new Data(25,06,2019);
+		Calendario calendario = new Calendario(data);
 		calendario .show();
 	}
 
