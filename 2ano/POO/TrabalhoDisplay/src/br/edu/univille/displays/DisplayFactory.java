@@ -8,5 +8,5 @@ public enum DisplayFactory {
 		}
 	};
 	
-	public abstract Display getInstance();
+	public abstract Display<?> getInstance();
 }
