@@ -19,6 +19,9 @@ public class Calendario extends Display<Data> implements Formatter<Data>{
 		this.data = data;
 	}
 
+	public Calendario() {
+	}
+	
 	@Override
 	public void show() {
 		System.out.println(formatter(this.data));

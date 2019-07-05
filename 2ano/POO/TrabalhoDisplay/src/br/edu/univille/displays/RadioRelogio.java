@@ -3,7 +3,7 @@ package br.edu.univille.displays;
 import br.edu.univille.classes.Hora;
 import br.edu.univille.formatter.Formatter;
 
-public class RadioRelogio extends Display implements Formatter<Hora>{
+public class RadioRelogio extends Display<Hora> implements Formatter<Hora>{
 	private Hora hora;
 	
 	public Hora getHora() {

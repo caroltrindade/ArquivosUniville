@@ -4,7 +4,7 @@ import br.edu.univille.classes.Frequencia;
 import br.edu.univille.classes.Graus;
 import br.edu.univille.formatter.Formatter;
 
-public class Temperatura extends Display implements Formatter<Graus>{
+public class Temperatura extends Display<Graus> implements Formatter<Graus>{
 	private Graus graus;
 	
 	public Graus getGraus() {
@@ -16,10 +16,12 @@ public class Temperatura extends Display implements Formatter<Graus>{
 	}
 	
 	public Temperatura(Graus graus) {
-		super();
 		this.graus = graus;
 	}
 
+	public Temperatura() {
+	}
+	
 	@Override
 	public void show() {
 		System.out.println(formatter(this.graus));	
