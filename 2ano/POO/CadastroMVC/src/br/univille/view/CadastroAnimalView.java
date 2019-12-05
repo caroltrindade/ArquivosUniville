@@ -80,7 +80,6 @@ public class CadastroAnimalView extends JFrame implements Observer{
 		l.setPreferredSize(new Dimension(65,16));
 		
 		codigoTextField = new JTextField(20);
-		codigoTextField.setEnabled(false);
 		
 		panel.add(l);
 		panel.add(codigoTextField);

@@ -10,40 +10,40 @@ public class CadastroAnimalController {
 	public CadastroAnimalController(CadastroAnimalView view, AnimalModel model) {
 		this.view = view;
 		this.model = model;
-		model.attach(view);
-		view.setModel(model);
+		model.attach(this.view);
+		view.setModel(this.model);
 		view.setControl(this);
 	}
 	
 	public void exibirTela() {
-		view.show();
-		model.notifyObservers();
+		this.view.show();
+		this.model.notifyObservers();
 	}
 
 	public void deletar() {
-		model.deletar();
-		view.setMensagemStatusBar("Registro deletado.");
-		view.getBotaoDeletar().setEnabled(false);
+		this.model.deletar();
+		this.view.setMensagemStatusBar("Registro deletado.");
+		this.view.getBotaoDeletar().setEnabled(false);
 	}
 
 	public void novo() {
-		model.novoRegistro();
-		view.getBotaoDeletar().setEnabled(false);
-		view.setMensagemStatusBar("Registro novo.");
+		this.model.novoRegistro();
+		this.view.getBotaoDeletar().setEnabled(false);
+		this.view.setMensagemStatusBar("Registro novo.");
 	}
 	
 	public void salvar() {
-		model.setNome(view.getNome());
-		model.setRaca(view.getRaca());
-		model.setCorPelo(view.getCorPelo());
+		this.model.setNome(this.view.getNome());
+		this.model.setRaca(this.view.getRaca());
+		this.model.setCorPelo(this.view.getCorPelo());
 		
 		try {
-			model.salvar();
-			view.setMensagemStatusBar("Registro salvo com sucesso!");
-			view.getBotaoDeletar().setEnabled(true);
+			this.model.salvar();
+			this.view.setMensagemStatusBar("Registro salvo com sucesso!");
+			this.view.getBotaoDeletar().setEnabled(true);
 		}catch(Exception e) {
 			e.printStackTrace();
-			view.setMensagemStatusBar("Erro: "+e.getMessage());
+			this.view.setMensagemStatusBar("Erro: " + e.getMessage());
 		}
 	}
 }

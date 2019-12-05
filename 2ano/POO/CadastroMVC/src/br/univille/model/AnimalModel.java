@@ -8,12 +8,13 @@ import b.univille.dao.AnimalDao;
 import br.univille.util.Observer;
 import br.univille.util.Subject;
 
-public class AnimalModel extends AnimalDao implements Subject{
+public class AnimalModel implements Subject{
 	
 	private long id;
 	private String nome;
 	private String raca;
 	private String corPelo;
+	private AnimalDao dao = new AnimalDao();
 	private List<Observer> list;
 	
 	public AnimalModel() {
@@ -85,26 +86,26 @@ public class AnimalModel extends AnimalDao implements Subject{
 		
 		// Validações
 		
-		if(this.nome == null || this.nome.isEmpty()) {
+		if (this.nome == null || this.nome.isEmpty()) {
 			throw new Exception("Nome é inválido");
 		}
-		else if(this.corPelo == null || this.corPelo.isEmpty()) {
-			throw new Exception("Cor do pêlo é inválida");
-		}
-		else if(this.raca == null || this.raca.isEmpty()) {
+		if (this.raca == null || this.raca.isEmpty()) {
 			throw new Exception("Raça é inválida");
+		}
+		if (this.corPelo == null || this.corPelo.isEmpty()) {
+			throw new Exception("Cor do pêlo é inválida");
 		}
 		else {
 			// Novo animal
 			
 			if(this.id == 0) {
-				insert(this);	
+				dao.insert(this);	
 			}
 			
 			// Edição do animal
 			
 			else {
-				update(this);
+				dao.update(this);
 			}
 			notifyObservers();
 		}
@@ -113,7 +114,7 @@ public class AnimalModel extends AnimalDao implements Subject{
 	// Deleta no banco de dados
 	
 	public void deletar() {
-		delete(this);
+		dao.delete(this);
 		novoRegistro();
 		notifyObservers();
 	}
